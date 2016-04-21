@@ -5,9 +5,9 @@ gem 'rails-api'
 gem 'spring', :group => :development
 gem 'sqlite3'
 gem 'bcrypt'
+gem 'byebug'
 
 group :development do
-  gem 'byebug'
   gem 'guard'
   gem 'guard-minitest'
 end
