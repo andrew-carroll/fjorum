@@ -1,6 +1,6 @@
 class Api::V1::ApiKeysController < ApplicationController
   def create
-    render_bad_request && return if params_missing?
+    render_bad_request && return if login_params_missing?
     render_unauthorized && return unless authenticated_user
     render_created!
   end
@@ -20,7 +20,7 @@ class Api::V1::ApiKeysController < ApplicationController
     render status: :bad_request, json: {}
   end
 
-  def params_missing?
+  def login_params_missing?
     !(credentials[:email] && credentials[:password])
   end
 
