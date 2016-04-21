@@ -1,6 +1,19 @@
 class ApiKey < ActiveRecord::Base
-  after_initialize :generate_key
+  before_create :generate_key
   belongs_to :user
+  def revoke!
+    self.revoked = true
+    self.save!
+  end
+
+  def active?
+    !(expired? || revoked?)
+  end
+
+  def expired?
+    Time.now >= self.expiration
+  end
+
   private
   def generate_key
     begin
