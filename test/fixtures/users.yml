@@ -1,0 +1,4 @@
+morty:
+  email: morty@rickandmorty.com
+  password_digest: <%= BCrypt::Password.create("jessica") %>
+  username: morty

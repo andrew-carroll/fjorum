@@ -1,0 +1,15 @@
+base: &BASE
+  user: morty
+  key: <%= SecureRandom.hex %>
+  expiration: <%= 1.year.from_now %>
+  revoked: false
+
+expired:
+  <<: *BASE
+  key: <%= SecureRandom.hex %>
+  expiration: <%= Time.now %>
+
+revoked:
+  <<: *BASE
+  key: <%= SecureRandom.hex %>
+  revoked: true
